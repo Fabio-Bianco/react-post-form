@@ -1,4 +1,4 @@
-# 📘 blog-form-app
+# 📘 BLOG FORM APP
 
 Progetto React per la creazione di un **form multifield** per inviare dati via `POST` a un'API esterna.  
 
@@ -44,5 +44,9 @@ src/
 ├── components/
 │   └── PostForm.jsx      
 ├── App.jsx               
-└── main.jsx              
+└── main.jsx     
+
+## Author
+
+Fabio-Bianco (b_bot)
 
