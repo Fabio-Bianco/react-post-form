@@ -29,7 +29,7 @@ Quando l’utente compila il form e clicca su “Pubblica Post”:
 4. In caso di errore, viene mostrato un messaggio di errore.
 
 ---
-1. Clona il repository:
+1. Clona la repository:
 
 - git clone https://github.com/Fabio-Bianco/blog-form-app.git
 - cd blog-form-app
