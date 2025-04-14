@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useEffect } from 'react'
+
 
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
 
   return (
     <>
-      
+      <h1>Multi-Form</h1>
     </>
   )
 }
