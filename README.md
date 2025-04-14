@@ -1,12 +1,48 @@
-# React + Vite
+# 📘 blog-form-app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Progetto React per la creazione di un **form multifield** per inviare dati via `POST` a un'API esterna.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologie usate
 
-## Expanding the ESLint configuration
+- **React** (con Vite ⚡ per uno sviluppo più veloce)
+- **Axios** per comunicare con l’API
+- **useState** per gestire lo stato del form
+- **CSS**
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📩 Funzionalità
+
+L'app contiene un form con i seguenti campi:
+
+- 👤 `author` – L’autore del post (stringa)
+- 📝 `title` – Il titolo del post (stringa)
+- 📄 `body` – Il contenuto del post (stringa)
+- 🌐 `public` – Checkbox che determina se il post è pubblico (`true`) o una bozza (`false`)
+
+Quando l’utente compila il form e clicca su “Pubblica Post”:
+1. I dati vengono raccolti in un oggetto `formData`.
+2. Axios invia una richiesta POST all’API: https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts.
+3. Se l’invio va a buon fine, l’app mostra un messaggio di conferma e stampa i dati in console.
+4. In caso di errore, viene mostrato un messaggio di errore.
+
+---
+1. Clona il repository:
+
+- git clone https://github.com/Fabio-Bianco/blog-form-app.git
+- cd blog-form-app
+- npm install
+- npm run dev
+- Apri il browser all’indirizzo http://localhost:5173
+
+
+## 🚥 Struttura del progetto
+
+src/
+├── components/
+│   └── PostForm.jsx      
+├── App.jsx               
+└── main.jsx              
+
