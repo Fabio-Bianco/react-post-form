@@ -17,15 +17,19 @@ const PostForm = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post("https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts", formData);
-      console.log("✅ Dati inviati correttamente:", res.data);
-    } catch (err) {
-      console.error("❌ Errore durante l'invio:", err);
-    }
+  
+    axios
+      .post("https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts", formData)
+      .then((res) => {
+        console.log("✅ Dati inviati correttamente:", res.data);
+      })
+      .catch((err) => {
+        console.error("Errore durante l'invio:", err);
+      });
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>

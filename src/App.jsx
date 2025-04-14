@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
+import PostForm from "./components/PostForm";
 
 
 
@@ -8,7 +7,16 @@ function App() {
 
   return (
     <>
-      <h1>Multi-Form</h1>
+      <div>
+        <h1>Crea un nuovo post</h1>
+        <PostForm />
+      </div>
+
+
+
+
+
+
     </>
   )
 }
