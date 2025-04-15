@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "./form.css";
 import "./MessageForm.css";
@@ -12,7 +12,8 @@ const PostForm = () => {
   });
 
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState(""); // 'success' | 'error'
+  const [messageType, setMessageType] = useState("");
+  const [lastPost, setLastPost] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -20,6 +21,14 @@ const PostForm = () => {
       ...formData,
       [name]: type === "checkbox" ? checked : value,
     });
+  };
+
+  const resetMessage = () => {
+    const timeMessage = setTimeout(() => {
+      setMessage("");
+      setMessageType("");
+    }, 3000);
+    return timeMessage;
   };
 
   const handleSubmit = (e) => {
@@ -32,23 +41,24 @@ const PostForm = () => {
         setMessage("Post pubblicato con successo!");
         setMessageType("success");
         setFormData({ author: "", title: "", body: "", public: false });
-
-        setTimeout(() => {
-          setMessage("");
-          setMessageType("");
-        }, 3000);
+        setLastPost(res.data); // salva il post creato
+        resetMessage();
       })
       .catch((err) => {
         console.error("❌ Errore durante l'invio:", err);
         setMessage("Errore durante la pubblicazione. Riprova.");
         setMessageType("error");
-
-        setTimeout(() => {
-          setMessage("");
-          setMessageType("");
-        }, 3000);
+        resetMessage();
       });
   };
+
+  const handleRemoveLastPost = () => {
+    setLastPost(null);
+  };
+
+  useEffect(() => {
+    console.log("📋 Componente PostForm montato.");
+  }, []);
 
   return (
     <div className="form-wrapper">
@@ -59,6 +69,7 @@ const PostForm = () => {
           </div>
         )}
 
+        <h1>Crea un nuovo post</h1>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="author">Autore</label>
@@ -110,6 +121,16 @@ const PostForm = () => {
 
           <button type="submit">Pubblica Post</button>
         </form>
+
+        {lastPost && (
+          <div className="last-post">
+            <h2>Ultimo post pubblicato:</h2>
+            <p><strong>{lastPost.title}</strong> di {lastPost.author}</p>
+            <p>{lastPost.body}</p>
+            <p><em>{lastPost.public ? "Pubblico" : "Bozza"}</em></p>
+            <button onClick={handleRemoveLastPost}>Rimuovi</button>
+          </div>
+        )}
       </div>
     </div>
   );
